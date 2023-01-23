@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+mongoose.set('strictQuery', true);
 // Defining Schema
 const userSchema = new mongoose.Schema({
   name: { type: String, required: true, trim: true },

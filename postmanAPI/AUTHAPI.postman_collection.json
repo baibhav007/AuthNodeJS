@@ -7,7 +7,7 @@
 	},
 	"item": [
 		{
-			"name": "AUTHAPI(Register)",
+			"name": "Register",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -31,6 +31,42 @@
 						"api",
 						"user",
 						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"baibhavrishu96@gmail.com\",\r\n    \"password\" : \"159753\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"user",
+						"login"
 					]
 				}
 			},
