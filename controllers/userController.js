@@ -79,6 +79,11 @@ class userController {
             res.send({"status":"failed", "message":"All fields are required"})
         }
     }
+
+    static loggeduser = async(req,res) => {
+        res.send({"user":req.user})
+
+    }
 }
 
 export default userController
