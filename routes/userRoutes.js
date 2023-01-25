@@ -10,6 +10,7 @@ router.use('/loggeduser', checkUserAuth)
 // Public routes
 router.post ('/register', userController.userRegistration)
 router.post('/login', userController.userLogin)
+router.post('/send-reset-password-email', userController.sendUserPasswordResetEmail)
 
 //Protected routes
 router.post('/changepassword', userController.changeUserPassword)

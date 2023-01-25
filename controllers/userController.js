@@ -84,6 +84,26 @@ class userController {
         res.send({"user":req.user})
 
     }
+    static sendUserPasswordResetEmail = async (req,res)=>{
+        const { email } = req.body
+        if(email){
+            const user =  await UserModel.findOne({email:email})
+            if(user){
+                const secret = user._id + process.env.JWT_SECRET_KEY
+                const token = jwt.sign({userID:user._id}, secret,{
+                    expiresIn:'30m'
+                })
+                const link =   `http://127.0.0.1.3000/api/user/reset/${user._id}/${token}`
+               // console.log(link)
+                res.send({"status":"success", "message" : "Password Reset Email Sent ... CHeck your Email"})
+            }else{
+                res.send({"status":"failed", "message" : "Email is required"})
+
+            }
+        }else{
+            res.send({"status":"failed", "message" : "Email is required"})
+        }
+    }
 }
 
 export default userController
