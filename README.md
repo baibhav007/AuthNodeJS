@@ -1,3 +1,5 @@
+## Complete Authentication API with JWT in Express JS
+
 ### In this project I have implemented the API's through which anyone can register, login, change password, forgot password, adn even can see the no. of user added here (admin only),
 
 #### Technology used (Dependencies) <br>
