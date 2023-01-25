@@ -1,6 +1,6 @@
-In this project I have implemented the API's through which anyone can register, login, change password, forgot password, adn even can see the no. of user added here (admin only),
+### In this project I have implemented the API's through which anyone can register, login, change password, forgot password, adn even can see the no. of user added here (admin only),
 
-Technology used (Dependencies)
+#### Technology used (Dependencies) <br>
 bcrypt : for password hashing
 dotenv : for secret code saving
 express : frame work for code optimization
