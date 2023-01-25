@@ -63,6 +63,22 @@ class userController {
             res.send({"status":"failed", "message":"Unable to login"})
         }
     }
+
+    static changeUserPassword = async(req,res)=>{
+        const {password, password_conformation} = req.body
+        if(password && password_conformation){
+            if(password !== password_conformation){
+                res.send({"status":"failed", "message" : "New password and confirm New password doesn't match"})
+            }else{
+                 const salt =await bcrypt.genSalt(10)
+                    const hashpass = await bcrypt.hash(password,salt)
+                    await UserModel.findByIdAndUpdate(req.user_id,{$set:{password:hashpass}})
+                    res.send({"status":"success", "message" : "Password changed successfully"})
+            }
+        }else{
+            res.send({"status":"failed", "message":"All fields are required"})
+        }
+    }
 }
 
 export default userController
