@@ -6,7 +6,7 @@
 
 ##### dotenv : for secret code saving <br>
 
-##### express : frame work for code optimization <br>
+##### express : for code optimization <br>
 
 ##### jsonwebtoken : JWT for using the web token <br>
 
