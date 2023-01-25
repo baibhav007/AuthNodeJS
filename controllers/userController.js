@@ -1,5 +1,5 @@
 import UserModel from "../models/user.js";
-//import { Jwt } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import bcrypt from 'bcrypt';
 
 class userController {
@@ -20,7 +20,9 @@ class userController {
                         password:hashpass
                     })
                     await new_user.save() 
-                    res.status(201).send({"status":"success", "message":"Registeration completed"})
+                    const save_user = await UserModel.findOne({email:email})
+                    const token = jwt.sign({userID:save_user._id},process.env.JWT_SECRET_KEY,{expiresIn:'7d'})
+                    res.status(201).send({"status":"success", "message":"Registeration completed", "token": token})
                    } catch(error){
                     console.log(error)
                     res.send({"status":"failed", "message":"Unable to Register"})
@@ -43,7 +45,8 @@ class userController {
                 if(user != null){
                     const isMatch = await bcrypt.compare(password, user.password)
                     if((user.email === email)&& isMatch){
-                        res.send({"status":"success", "message":"Successfully login"}) 
+                        const token = jwt.sign({userID:user._id},process.env.JWT_SECRET_KEY,{expiresIn:'7d'})
+                        res.send({"status":"success", "message":"Successfully login", "token": token}) 
                     }else{
                         res.send({"status":"failed", "message":"Email or Password doesn't mathces"}) 
                     }
